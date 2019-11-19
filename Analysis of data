@@ -1,11 +1,58 @@
 DATA CAN BE ACCESSED VIA:
 https://www.ncbi.nlm.nih.gov/geo/geo2r/?acc=GSE61113
 
-All data is accessable trough either opening the .CEL files with third party software (I believe R is also possible). However, often a .CDF file is required
-in order to open a .CEL file. I found that via an online tool called GEO2R the data can also be accessed, by replicating the R file online.
-By using the R script given in the online tool, the data can also be accessed via R, because the data is linked to the online
-platform and can be accessed with the code "GSE61113". However, it is currently not clear what the data in the dataset means.
+All raw data is accessable trough either opening the .CEL files with third party software (I believe R is also possible). However, often a .CDF file is required
+in order to open a .CEL file. A .CDF file describes the layout for an Affymetrix GeneChip array, and for this research comes
+under the name: "[HuGene-2_0-st] Affymetrix Human Gene 2.0 ST Array [transcript (gene) version]". On the affymetrix website the libraries can be downloaded,
+but I am unsure that this will eventually lead to the neccessary file, since only data files and an executable file can be
+downloaded. However, I am unable to correctly install this library. The .CDF file data is visible in a visualized data table, however the data file
+is not provided. The sample files also show no correlation with the GSM numbers of the raw/processed data
 
+The processed data per dataset is also accessable on "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE61113".
+Here the samples are divided in 9 different categories:
+1. AT57 TCP
+2. AT57 PI flat
+3. AT57 PI 650
+4. AT58 TCP
+5. AT58 PI flat
+6. AT58 PI 650
+7. AT61 TCP
+8. AT61 PI flat
+9. AT61 PI 650
+
+The numbers 57, 58 and 61 are the donor numbers. These are the donor MSCs. TCP, PI flat and PI 650 say something about
+the chip that was used. [TCP] = Tissue cultured plastic, [PI flat]= non-structured polyimide and [PI 650]= nanogrooved polyimide.
+The data in the samples are the genome wide gene expression profiles of MSCs after 5 days under normal conditions.
+
+When the data is accessed trough the visualized full table. The data from the "HuGene 2.0 st" platform and the samples
+show a correlation. The ID_REF of the samples are the same as the ID of the chip data (transcript_cluster_id). So the "VALUE"(= log2 RMA signal)
+of the samples can be compared to the data of the chip. This chip data includes: strand range, start range, end range, number of probes,
+GenBank and RefSeq Accessions from mrna_assignment column, genomic location of transcript cluster and NCBI RefSeq for chromosome of current build.
+
+The RMA (Robust Microarray Analysis) signal is a form of quantile normalization applicable to gene expression (microarray) experiments. 
+It is a analysis method that when selected, adjusts the probe intensity data in three stepts:
+1. Signal values for each chip are adjusted using RMA background correction
+2. Data across all chips are normalized using the selected normalization method:
+  - Quantile
+  - Global Median
+  - None
+3. Probe data are summarized into gene level signal values using RMA's median polish summarization
+(https://www.dnastar.com/ArrayStar_Help/index.html#!Documents/rma.htm) 
+The log 2, I assume, is an extra method of processing the data. A tutorial on RMA can be found here:
+"https://genomequebec.mcgill.ca/nanuqAdministration/download/MicroarrayRMATutorial_en.pdf"
+
+When searching for the ID numbers, somtimes another NCBI platform can be found, describing extra information about the HuGene 2-0 st Affymetrix Human Gene 2.0 ST Array.
+The GB_ACC (GenBank RefSeq Accessions) is more promising, and searching for the codes results in a ncbi database about
+what RNA the code is linked to (e.g. NR_046018 = Homo Sapiens DEAD/H-box Helicase 11 like 1, (DDX11L1), non coding.
+When comparing the two datasets, the RMA signal can be linked to a specific RNA.
+
+I found that via an online tool called GEO2R the data can 
+also be accessed, by replicating the R file online. By using the R script given in the online tool, the data can also be accessed via R, because the data is 
+linked to the online platform and can be accessed with the code "GSE61113". However, it is currently not clear what the data in the dataset means.
+The GEO2R data seems to link the two databases together, providing the GSM (with title AT57 TCP), the title and value together,
+and links it to the corresponding RNA. When clicking on a row, a graph is shown with the expression values per GSM code. Some other data is shown as well,
+such as P-values and t-statistics).
+(link: https://www.ncbi.nlm.nih.gov/geo/geo2r/?acc=GSE61113)
 
 
 Summary of paper "Surface topography enhances differentiation of mesenchymal stem cells towards osteogenic and adipogenic lineages" (Abagnale, et al., 2015)
