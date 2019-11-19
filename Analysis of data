@@ -1,6 +1,11 @@
 DATA CAN BE ACCESSED VIA:
 https://www.ncbi.nlm.nih.gov/geo/geo2r/?acc=GSE61113
 
+All data is accessable trough either opening the .CEL files with third party software (I believe R is also possible). However, often a .CDF file is required
+in order to open a .CEL file. I found that via an online tool called GEO2R the data can also be accessed, by replicating the R file online.
+By using the R script given in the online tool, the data can also be accessed via R, because the data is linked to the online
+platform and can be accessed with the code "GSE61113". However, it is currently not clear what the data in the dataset means.
+
 
 
 Summary of paper "Surface topography enhances differentiation of mesenchymal stem cells towards osteogenic and adipogenic lineages" (Abagnale, et al., 2015)
