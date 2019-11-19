@@ -16,3 +16,104 @@ and tested with one paramater at a time in order to determine its impact on cell
 1. width of grooves and ridged can be systematically modified
 2. orientation of cells allong these structures can readily be observed
 3. Such structures may reflect the fibrillar organization of ECM of callagen fibrils
+
+Methods of engraving depends on the biomaterial and on the pattern. Frequently used methods are:
+- Photolithography
+- Soft lithography
+- Reactive ion etching
+- Direct multi-beam interference
+
+MSCs are populair cell types because of their relevance in regenitive medicine, can be isolated from various tissues,
+and they can differentiate towards multiple cell types including osteocytes, adipocytes, and chrondrocytes. It has been
+suggested that specific surface patterns can either maintain MSCs in undifferentiated state or drive them towards one of 
+the above lineages. Cell shape, cytoskeletal tension and RhoA siganling are thought to direct this commitment.
+
+Several studies focused on the impact of micro- and nano-grooved substrates in osteogenic differentiation:
+https://www.sciencedirect.com/science/article/pii/S0142961213013902
+https://www.sciencedirect.com/science/article/pii/S014296121200066X
+https://www.sciencedirect.com/science/article/pii/S0142961211011343
+https://www.sciencedirect.com/science/article/pii/S0142961210000505
+https://www.nature.com/articles/nmat2013  
+
+The following studies reported effects on adipogenesis:
+https://www.sciencedirect.com/science/article/pii/S0142961213007151
+https://www.scopus.com/record/display.uri?eid=2-s2.0-2142652189&origin=inward&txGid=bcd2bcbaa47837328c29da252f6c22bb
+
+
+THE STUDY:
+
+In this study a microgrooved polymide chip featuring a combination of 25 different strucutes with systematic variation of the width
+of grooves and ridges was designed. In addition, groove and ridge structures where created by multi beam laser inteference.
+These two different approaches were combined to bridge a wider spectrum of topographies. The impact of these structures on morphology,
+focal adhesions and in vitro differentiation of MSCs was analysed.
+
+engraving and production methods described in paper, as well as isolation of MSCs.
+
+Analysis:
+
+- Proliferation: Proliferation of MSCs on the different substrates was estimated by the number on nuclei. MSCs were fixed and stained
+after 10h and 1 week time. Pictures were taken from random areas using a fluorescent microscope and the nuclei were counted with software.
+
+- Focal edhesion Analysis: were detected as bright clusters in immunocytochemical analysis with the use of images.
+
+- Adipogenic and osteogenic differentiation: After 2 weeks samples were fixed and stained with DAPI and the fluorescent dye BODIPY.
+The percentage of differentiated cells was determined in pictures of randomly chosen areas using a fluorescent microscope and counted.
+After 2 weeks of differentiation, osteogenesis was quantified by being stained with alizarin red dye and extracted and quantified.
+
+-qRT-PCR analysis: RNA was isolated from samples and analyzed. cDNA was generated with a kit. Semi-quantative qRT-PCR was carried out with
+a special instrument with gene specific assays. GAPDH was used as reference gene.
+
+- Cell motility analysis: not relevant
+
+- Microarray analysis: Genome wide gene expression profiles of MSCs were analyzed after five days of culture on nanostructed substrates
+Total RNA (300 ng) was amplified and hybridized. Raw data were normalized. For principle component analysis the entire gene set without X and Y
+chromoses were used. Hierarchical clustering was perfomed. To identify sgnificantly differentially expressed genes a paired limma T-test was done in R.
+Since none of the genes reached an adjusted p-value of <0.05, an alternative filter for 2-fold differentially expressed genes was done. 
+Microarray data is accessible in GEO: "http://www.ncbi.nlm.nih.gov/geo" with accession number: GSE61113.
+
+- Statistics: Results are expressed as mean +- SD of at least three independent experiments if not indicated otherwise. Two-sided Student's T-test to
+estimate statistical relevance was used.
+
+RESULTS:
+
+- Grooves and ridges: On the chip the width and grooves varied ranging from 2 to 15 micrometer. 25 different patterns as well as flat,
+non-structed PI could be analyzed in parallel. The groove depth was about 2 micrometer. MSCs aligned parallel to the main axis of the grooves
+on all 25 differnt patterns within a few hours whereas they randomply spread on a flat surface. All the squares supported
+MSCs grwoth and no consistend differences in cellular proliferation was onbserved in five biologica replicas. MSCs seem to proliferate equally well
+on the different microstructes. However, line and space patterns to affect cellular orienatation. 
+
+- Impact on differentiation of MSCs: for adiopogenisis, the differentiation into fat cells, the percentage of cells that acquired fat droplets.
+On the 15 micrometer ridges MSCs revealed higher adipogenic differentiation than on 2 micrometer ridges.
+For osteogenesis an oposite trend was found. It was enhanced on thinner ridges (2 micrometer!). There was a gradual reduction of
+osteogenic differentiation with increasing ridge width, whereas groove width was less relevant. Thus the size of the ridges is more
+important than the size of the grooves to support lineage specific differentiation of MSCs (!!!).
+
+Increased expression of the osteogenic marker genes osteonectin (SPARC), osteopontin (SPP1) and osteocalcin (BGLAP) was
+NOT observed in the thinner ridges, which might be attributed to the fact that up-regulation of osteogenic marker genes was always relatively low.
+
+Cells on the microgrooves were more elongated than on flat PI and the aspect ratio was particularly high on the smaller 2 micrometer grooves.
+
+SAME EXPERIMENT IN VITRO:
+Osteogenic differentiation was significantly enhanced by PI 650. Furthermore, up-regulation of the osteogenic marker genes was higher on
+nanostructured PI than on flat PI. Adipogenesis as well as osteogenesis can be enhanced by the same nanostructures indicating
+that the support of nanotopography on in vitro differentiation is not necessarily lineage-specific.
+
+NANOTOPOGRAPHY DOES NOT AFFECT LINEAGE-SPECIFIC GENE EXPRESSION:
+The hypothesis that nanosctructures might drive cellular differentiation even in the absence of specific induction media was made. 
+Global gene expression profiles of MSCs cultured in normal medium either on tissue culture plastic, non strucuted PI or PI650, was analyzed.
+Component analysis shows that samples were seperated according to the substrate in which they had been cultured. 
+Samples clustered primarily according to the MSC preparations from different donors. The search for genes that were significantly differentially
+expressed on the different substrates, none reached statistical significance. This might be the result of high donor-specific variation and
+a small number of replicas. Thereforce they focused alternatively on genes which showed two-fold expression changes.
+A high proportion of these differentailly expressed transcripts were non coding RNAs. For further analyzation if 
+nanostructured biased lineage-specific gene expression in the absence of medium gene sets were compiled involved in
+osteogenic, adipogenic, chondrogenic and myogenic differentiation. However, these gene sets did not reveal consistent changes
+according to the substrates.
+
+Numerous reports show that surface patterning influences gene expression profiles:
+https://www.sciencedirect.com/science/article/pii/S014296121200066X
+https://www.scopus.com/record/display.uri?eid=2-s2.0-36749093527&origin=inward&txGid=67f2d2a2d37074a9304b8e8101ce59b4
+https://www.scopus.com/record/display.uri?eid=2-s2.0-47649092532&origin=inward&txGid=e5af9df54613866e08706099ef0577f3
+
+However, when they compared the transcriptome of MSCs cultured on non-structured PI and PI650 they did not detect significant differences
+in gene expression using adjusted p-values. 
