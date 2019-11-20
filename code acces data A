@@ -1,14 +1,17 @@
+"""
+Use https://www.ncbi.nlm.nih.gov/nuccore/ to find nucleotide accession
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 
-with open("StudyID_010_Processed_data_matrix_file.txt") as inp:
+with open("Processed_data_matrix_file.txt") as inp:
     rw = list(zip(*(line.strip().split('\t') for line in inp)))
     data = list(rw[:][:]);
-with open("Reporters_B.txt") as inp:
+with open("Reporters_A.txt") as inp:
     rep = list(zip(*(line.strip('\n').split('\t') for line in inp)))
 
-i = rep[5].index('NR_015450.1')
-N = rep[4][i]
+i = rep[1].index('NM_014051')
+N = rep[0][i]
 j = data[0].index(N)    
 
 for i in range(0,5):  
