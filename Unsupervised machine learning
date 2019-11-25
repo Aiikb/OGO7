@@ -1,0 +1,47 @@
+Unsupervised machine learning
+
+Both methods of machine learning aim to test how well the model captures the underlying target biology.
+Unsupervised machine learning identifies underlying structures in data without needing any sample labels. 
+The main goal of unsupervised learning would be clustering samples into similar groups and identifying 
+hidden variables present in lower-dimensional subspaces. It has been used to extract underlying gene expression
+modules present in various percentages in lower-dimensional data representations.[1] 
+
+In many unsupervised algorithms, the models learn through minimizing reconstruction cost, in an n × p input data matrix X, 
+where n and p are the samples and gene expression features. The algorithms reconstruct the input matrix after passing the 
+data through one or more intermediate layers and projecting the matrix back onto input feature space. Most often, 
+the intermediate layers have fewer dimensions than the number of input features and are considered bottleneck layers.
+
+in each compression algorithm there are two distinct and valuable matrices extracted that require interpretation.
+The matrices represent the learned components scores across samples, as well as the relative contribution of 
+each expression feature to each component. In all cases, the researcher must select the bottleneck dimensionality
+or rely on heuristics.
+
+Compression algorithms receive input gene expression from thousands of samples and apply a bottleneck layer to learn the most important
+sources of variation. These sources are learned in different ways. 
+PCA (Principle Component Analysis) learns  sources of variation that are orthogonal and that explain a decreasing amount of variation 
+  in the data. Multiple examples of PCA can be found here with sample codes [2]
+  
+ICA (Independant Component Analysis) solves a signal processing problem of disentangling sources of independent signals, which are not 
+  necessarily orthogonal.  
+  
+NMF (Non-negative Matrix Factorization) identifies so-called metagenes, or modules of genes with coordinated expression patterns. NMF is 
+  also popular for cell type deconvolution because cell types exist in positive, linear proportions in bulk tissue.
+  NMF is used to deconvolve gene expression data to identify differentially expressed genes when no marker genes or reference
+  data exist. The NMF core algorithm can be guided to identify cell types by restricting the component matrix columns to sum to one
+NN-based compression algorithms, such as autoencoders and their many variations, also compress data into lower dimensions. 
+
+NMF is increasingly becoming the method of choice to derive pathway and cell type–specific signatures from transcriptomic compendia. 
+NMF does not constrain solutions to be orthogonal, and can therefore identify biological processes that are known
+to be interconnected. More information on the principles of NMF can be found here [3] !!
+
+These methods compress data with a nonlinear activation and can therefore learn subtle, nonlinear patterns in gene
+expression data given enough samples. Applied to transcriptomic compendia, compression algorithms
+have provided insights into underlying pathway activity.
+
+
+
+
+[1]: https://www.annualreviews.org/doi/abs/10.1146/annurev-biodatasci-072018-021348 
+[2]: https://www.dezyre.com/data-science-in-python-tutorial/principal-component-analysis-tutorial
+[3]: https://mlexplained.com/2017/12/28/a-practical-introduction-to-nmf-nonnegative-matrix-factorization/
+[4]: https://towardsdatascience.com/dimensionality-reduction-pca-ica-and-manifold-learning-65393010253e
