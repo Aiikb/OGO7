@@ -2,13 +2,49 @@ Supervised machine learning methods
 
 What are supervised learning methods (short recap)
 Supervised machine learning methods have a clear goal in mind and the data is labeled. For example, we want to know the difference between
-flat and structured surfaces, so we send the data in the model with these labels defined. This technique is mainly used to predict future
-values based on the given data.
+flat and structured surfaces, so we send the data in the model with these labels defined. [1] This technique is mainly used to predict future
+values based on the given data. [2]
+
+Mostly, supervised methods solve the equation Xw = y. In our case X would be a matrix with in each column a gene and in each row a sample. 
+y are the target classes, in our case the label 'flat' or 'structured'. The w is a vector with the parameters that are optimized by the 
+model. 
+
+The article mentiones a lot of different supervised machine learning methods, used for all different kinds of tasks. However, based on
+these lines in the article:
+"... regression models and SVMs identify a subspace that represents specific activation patterns in the input feature space. The magnitude
+of these features can be interpreted as the most important genes for the classification task." [1]
+I think that these methods are used in very similar ways as we want to use them.
+
+Different supervised methods:
+Linear regression: fits a linear line with Y = a + b*x1 + c*x2 + ... . A simple example would be to try to fit a line with the formula
+Y = a + b*x with x is the height of a person and you want to find a prediction for the corresponding weight. You provide the model with a
+lot of samples of persons with weight and height and the model will give you based on that a slope (b) and an intercept (a) that will match
+the points as well as possible. [3]
+
+Logistic regression: gives a probability as output. This model does NOT assume a linear relationship between the features (which is 
+beneficial). However it needs a large sample size and we only have 21. [3]
+
+Polynomial regression: the same as linear regression, however with higher order functions. (The weights are still linearly correlated) 
+However, we have to be careful not to overfit the data. [3]
+
+ElasticNet regression: this is useful when there are multiple features that are correlated. For us this is useful because genes are
+correlated. However, I think the point for us is to find the correlation between the genes, while this method filters them out. [3]
+
+Support Vector Machine (SVM): "The objective of the support vector machine algorithm is to find a hyperplane in an N-dimensional
+space(N — the number of features) that distinctly classifies the data points." In other words: We want to find a plane between the
+datapoints that creates the biggest distance between the two classes. Suport vectors are the data points closest to the hyperplane, so
+these help shape the plane. In the source, a python code is provided for an example with two classes. [4]
 
 
 
-
-Lastly, some things to keep in mind:
-1. We need to split the data in two sets: a training set and a test set (80/20 ratio). That is necessary because the data with which you
+Lastly something to keep in mind:
+We need to split the data in two sets: a training set and a test set (90/10 ratio). That is necessary because the data with which you
 train the data will have a lower prediction error than new data. Of course, if we choose to use an existing model, all the data will be
-test data.
+test data. [1]
+
+
+Sources
+1. https://www.annualreviews.org/doi/pdf/10.1146/annurev-biodatasci-072018-021348
+2. https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d
+3. https://www.analyticsvidhya.com/blog/2015/08/comprehensive-guide-regression/
+4. https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47
