@@ -1,0 +1,14 @@
+Supervised machine learning methods
+
+What are supervised learning methods (short recap)
+Supervised machine learning methods have a clear goal in mind and the data is labeled. For example, we want to know the difference between
+flat and structured surfaces, so we send the data in the model with these labels defined. This technique is mainly used to predict future
+values based on the given data.
+
+
+
+
+Lastly, some things to keep in mind:
+1. We need to split the data in two sets: a training set and a test set (80/20 ratio). That is necessary because the data with which you
+train the data will have a lower prediction error than new data. Of course, if we choose to use an existing model, all the data will be
+test data.
