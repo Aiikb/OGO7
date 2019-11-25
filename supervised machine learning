@@ -35,7 +35,7 @@ space(N — the number of features) that distinctly classifies the data points."
 datapoints that creates the biggest distance between the two classes. Suport vectors are the data points closest to the hyperplane, so
 these help shape the plane. In the source, a python code is provided for an example with two classes. [4]
 
-
+Moreover, I found a paper that worked with a semi-supervised regression model to find changes in genetic pathways. [5]
 
 Lastly something to keep in mind:
 We need to split the data in two sets: a training set and a test set (90/10 ratio). That is necessary because the data with which you
@@ -48,3 +48,4 @@ Sources
 2. https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d
 3. https://www.analyticsvidhya.com/blog/2015/08/comprehensive-guide-regression/
 4. https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47
+5. https://onlinelibrary.wiley.com/doi/full/10.1002/sam.11349?sid=worldcat.org
