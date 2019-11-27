@@ -1,6 +1,6 @@
 library(oligo)
-setwd("/Users/20172805/Documents/BMT3/OGO comp") # set working directory to datafolder
-untar("Raw data/GSE41446_RAW.tar", exdir = "GSE41446/CEL")
+setwd("/Users/xxxxxxxxx/Documents/OGO7") # set working directory to datafolder
+untar("data/GSE41446_RAW.tar", exdir = "GSE41446/CEL")
 celFiles <- list.files("GSE41446/CEL",full=TRUE)     				# open celfiles to celFiles
 affyRaw <- read.celfiles(celFiles)				# unpack celfiles
 eset <- rma(affyRaw)						# normalise data
