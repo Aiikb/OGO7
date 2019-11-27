@@ -6,6 +6,6 @@ BiocManager::install(version = "3.10")
 
 BiocManager::install("oligo")
 
-# wachten en instaleren
+# installeren
 
-BiocManager::install("lumi")
+BiocManager::install("WGCNA")
