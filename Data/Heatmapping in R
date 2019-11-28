@@ -1,0 +1,9 @@
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("ComplexHeatmap")
+library(ComplexHeatmap)
+
+setwd=("/Users/")                                                   #insert working directory
+
+Fdata = read.table(file="filtereddata.txt",sep="\t",header=TRUE,row.names=1)    #load data as Fdata with the sample codes as header and define the first row with genecodes as rownames                                               
+hv <- heatmap(x)
