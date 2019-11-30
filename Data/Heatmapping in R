@@ -113,9 +113,13 @@ hmd_7 <- hmd_1_7+hmd_2_7+hmd_3_7+hmd_4_7+hmd_5_7+hmd_6_7+hmd_7_7+hmd_8_7+hmd_9_7
 
 hmd_3 + hmd_7
 
-#make heatmaps per topography per day
+#make matrices per topography per day
 
-TPData_1_D3 <- data.matrix(Fdata[,c("D1_T1_D3", "D1_T2_D3", "D1_T1_D7", "D1_T2_D7")])
-TPData_2_D3 <- data.matrix(Fdata[,c("D1_T1_D3", "D1_T2_D3", "D1_T1_D7", "D1_T2_D7")])
-TPData_1_D7 <- data.matrix(Fdata[,c("D1_T1_D3", "D1_T2_D3", "D1_T1_D7", "D1_T2_D7")])
-TPData_2_D7 <- data.matrix(Fdata[,c("D1_T1_D3", "D1_T2_D3", "D1_T1_D7", "D1_T2_D7")])
+TPData_1_D3 <- data.matrix(Fdata[,c("D1_T1_D3", "D2_T1_D3", "D3_T1_D3", "D4_T1_D3", "D5_T1_D3", "D6_T1_D3", "D7_T1_D3", "D8_T1_D3", "D9_T1_D3", "D10_T1_D3", "D11_T1_D3")])
+TPData_2_D3 <- data.matrix(Fdata[,c("D1_T2_D3", "D2_T2_D3", "D3_T2_D3", "D4_T2_D3", "D5_T2_D3", "D6_T2_D3", "D7_T2_D3", "D8_T2_D3", "D9_T2_D3", "D10_T2_D3", "D11_T2_D3")])
+TPData_1_D7 <- data.matrix(Fdata[,c("D1_T1_D7", "D2_T1_D7", "D3_T1_D7", "D4_T1_D7", "D5_T1_D7", "D6_T1_D7", "D7_T1_D7", "D8_T1_D7", "D9_T1_D7", "D10_T1_D7", "D11_T1_D7")])
+TPData_2_D7 <- data.matrix(Fdata[,c("D1_T2_D7", "D2_T2_D7", "D3_T2_D7", "D4_T2_D7", "D5_T2_D7", "D6_T2_D7", "D7_T2_D7", "D8_T2_D7", "D9_T2_D7", "D10_T2_D7", "D11_T2_D7")])
+
+# plot heatmaps per topography per day
+hmd_t_3 = Heatmap(TPData_1_D3) + Heatmap(TPData_2_D3)
+hmd_t_7 = Heatmap(TPData_1_D7) + Heatmap(TPData_2_D7)
