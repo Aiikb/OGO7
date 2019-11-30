@@ -7,3 +7,115 @@ setwd=("/Users/")                                                   #insert work
 
 Fdata = read.table(file="filtereddata.txt",sep="\t",header=TRUE,row.names=1)    #load data as Fdata with the sample codes as header and define the first row with genecodes as rownames                                               
 hv <- heatmap(x)
+
+
+#rename columns
+names(Fdata)[1] <- "D1_T1_D3"		#1, T1, D3	
+names(Fdata)[2] <- "D2_T1_D3"		#2
+names(Fdata)[3] <- "D3_T1_D3"		#3
+names(Fdata)[4] <- "D4_T1_D3"		#4
+names(Fdata)[5] <- "D5_T1_D3"		#5
+names(Fdata)[6] <- "D6_T1_D3"		#6
+names(Fdata)[7] <- "D7_T1_D3"		#7
+names(Fdata)[8] <- "D8_T1_D3"		#8
+names(Fdata)[9] <- "D9_T1_D3"		#9
+names(Fdata)[10] <- "D10_T1_D3"		#10
+names(Fdata)[11] <- "D11_T1_D3"		#11, T1, D3
+names(Fdata)[12] <- "D1_T2_D3"		#1, T2, D3
+names(Fdata)[13] <- "D2_T2_D3"		#2
+names(Fdata)[14] <- "D3_T2_D3"		#3
+names(Fdata)[15] <- "D4_T2_D3"		#4
+names(Fdata)[16] <- "D5_T2_D3"		#5
+names(Fdata)[17] <- "D6_T2_D3"		#6
+names(Fdata)[18] <- "D7_T2_D3"		#7
+names(Fdata)[19] <- "D8_T2_D3"		#8
+names(Fdata)[20] <- "D9_T2_D3"		#9
+names(Fdata)[21] <- "D10_T2_D3"		#10
+names(Fdata)[22] <- "D11_T2_D3"		#11, T2, D3
+names(Fdata)[23] <- "D1_T1_D7"		#1, T1, D7
+names(Fdata)[24] <- "D2_T1_D7"		#2
+names(Fdata)[25] <- "D3_T1_D7"		#3
+names(Fdata)[26] <- "D4_T1_D7"		#4
+names(Fdata)[27] <- "D5_T1_D7"		#5
+names(Fdata)[28] <- "D6_T1_D7"		#6
+names(Fdata)[29] <- "D7_T1_D7"		#7
+names(Fdata)[30] <- "D8_T1_D7"		#8
+names(Fdata)[31] <- "D9_T1_D7"		#9
+names(Fdata)[32] <- "D10_T1_D7"		#10
+names(Fdata)[33] <- "D11_T1_D7"		#11, T2, D7
+names(Fdata)[34] <- "D1_T2_D7"		#1
+names(Fdata)[35] <- "D2_T2_D7"		#2
+names(Fdata)[36] <- "D3_T2_D7"		#3
+names(Fdata)[37] <- "D4_T2_D7"		#4
+names(Fdata)[38] <- "D5_T2_D7"		#5
+names(Fdata)[39] <- "D6_T2_D7"		#6
+names(Fdata)[40] <- "D7_T2_D7"		#7
+names(Fdata)[41] <- "D8_T2_D7"		#8
+names(Fdata)[42] <- "D9_T2_D7"		#9
+names(Fdata)[43] <- "D10_T2_D7"		#10
+names(Fdata)[44] <- "D11_T2_D7"		#11, T2, D7
+
+#make multiple datasets per donor per day
+
+DData_1_D3 <- data.matrix(Fdata[,c("D1_T1_D3", "D1_T2_D3")])
+DData_2_D3 <- data.matrix(Fdata[,c("D2_T1_D3", "D2_T2_D3")])
+DData_3_D3 <- data.matrix(Fdata[,c("D3_T1_D3", "D3_T2_D3")])
+DData_4_D3 <- data.matrix(Fdata[,c("D4_T1_D3", "D4_T2_D3")])
+DData_5_D3 <- data.matrix(Fdata[,c("D5_T1_D3", "D5_T2_D3")])
+DData_6_D3 <- data.matrix(Fdata[,c("D6_T1_D3", "D6_T2_D3")])
+DData_7_D3 <- data.matrix(Fdata[,c("D7_T1_D3", "D7_T2_D3")])
+DData_8_D3 <- data.matrix(Fdata[,c("D8_T1_D3", "D8_T2_D3")])
+DData_9_D3 <- data.matrix(Fdata[,c("D9_T1_D3", "D9_T2_D3")])
+DData_10_D3 <- data.matrix(Fdata[,c("D10_T1_D3", "D10_T2_D3")])
+DData_11_D3 <- data.matrix(Fdata[,c("D11_T1_D3", "D11_T2_D3")])
+
+DData_1_D7 <- data.matrix(Fdata[,c("D1_T1_D7", "D1_T2_D7")])
+DData_2_D7 <- data.matrix(Fdata[,c("D2_T1_D7", "D2_T2_D7")])
+DData_3_D7 <- data.matrix(Fdata[,c("D3_T1_D7", "D3_T2_D7")])
+DData_4_D7 <- data.matrix(Fdata[,c("D4_T1_D7", "D4_T2_D7")])
+DData_5_D7 <- data.matrix(Fdata[,c("D5_T1_D7", "D5_T2_D7")])
+DData_6_D7 <- data.matrix(Fdata[,c("D6_T1_D7", "D6_T2_D7")])
+DData_7_D7 <- data.matrix(Fdata[,c("D7_T1_D7", "D7_T2_D7")])
+DData_8_D7 <- data.matrix(Fdata[,c("D8_T1_D7", "D8_T2_D7")])
+DData_9_D7 <- data.matrix(Fdata[,c("D9_T1_D7", "D9_T2_D7")])
+DData_10_D7 <- data.matrix(Fdata[,c("D10_T1_D7", "D10_T2_D7")])
+DData_11_D7 <- data.matrix(Fdata[,c("D11_T1_D7", "D11_T2_D7")])
+
+#make heatmap list
+
+hmd_1_3 <- Heatmap(DData_1_D3)
+hmd_2_3 <- Heatmap(DData_2_D3)
+hmd_3_3 <- Heatmap(DData_3_D3)
+hmd_4_3 <- Heatmap(DData_4_D3)
+hmd_5_3 <- Heatmap(DData_5_D3)
+hmd_6_3 <- Heatmap(DData_6_D3)
+hmd_7_3 <- Heatmap(DData_7_D3)
+hmd_8_3 <- Heatmap(DData_8_D3)
+hmd_9_3 <- Heatmap(DData_9_D3)
+hmd_10_3 <- Heatmap(DData_10_D3)
+hmd_11_3 <- Heatmap(DData_11_D3)
+
+hmd_3 <- hmd_1_3+hmd_2_3+hmd_3_3+hmd_4_3+hmd_5_3+hmd_6_3+hmd_7_3+hmd_8_3+hmd_9_3+hmd_10_3+hmd_11_3
+
+hmd_1_7 <- Heatmap(DData_1_D7)
+hmd_2_7 <- Heatmap(DData_2_D7)
+hmd_3_7 <- Heatmap(DData_3_D7)
+hmd_4_7 <- Heatmap(DData_4_D7)
+hmd_5_7 <- Heatmap(DData_5_D7)
+hmd_6_7 <- Heatmap(DData_6_D7)
+hmd_7_7 <- Heatmap(DData_7_D7)
+hmd_8_7 <- Heatmap(DData_8_D7)
+hmd_9_7 <- Heatmap(DData_9_D7)
+hmd_10_7 <- Heatmap(DData_10_D7)
+hmd_11_7 <- Heatmap(DData_11_D7)
+
+hmd_7 <- hmd_1_7+hmd_2_7+hmd_3_7+hmd_4_7+hmd_5_7+hmd_6_7+hmd_7_7+hmd_8_7+hmd_9_7+hmd_10_7+hmd_11_7
+
+hmd_3 + hmd_7
+
+#make heatmaps per topography per day
+
+TPData_1_D3 <- data.matrix(Fdata[,c("D1_T1_D3", "D1_T2_D3", "D1_T1_D7", "D1_T2_D7")])
+TPData_2_D3 <- data.matrix(Fdata[,c("D1_T1_D3", "D1_T2_D3", "D1_T1_D7", "D1_T2_D7")])
+TPData_1_D7 <- data.matrix(Fdata[,c("D1_T1_D3", "D1_T2_D3", "D1_T1_D7", "D1_T2_D7")])
+TPData_2_D7 <- data.matrix(Fdata[,c("D1_T1_D3", "D1_T2_D3", "D1_T1_D7", "D1_T2_D7")])
