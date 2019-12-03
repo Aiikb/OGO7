@@ -127,4 +127,4 @@ hmd_t_7 = Heatmap(TPData_1_D7, column_order = order(as.numeric(gsub("column", ""
 # withdraw TPData_1_D3 from TPData_2_D3
 TPdiff_D3 <- TPData_2_D3 - TPData_1_D3
 TPdiff_D7 <- TPData_2_D7 - TPData_1_D7
-Heatmap(TPdiff_D3) + Heatmap(TPdiff_D3)         # plot the heatmap for the differences in expression between the two topographies. No clear patterns/lines are found
+Heatmap(TPdiff_D3) + Heatmap(TPdiff_D7)         # plot the heatmap for the differences in expression between the two topographies. No clear patterns/lines are found
