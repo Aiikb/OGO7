@@ -121,5 +121,5 @@ TPData_1_D7 <- data.matrix(Fdata[,c("D1_T1_D7", "D2_T1_D7", "D3_T1_D7", "D4_T1_D
 TPData_2_D7 <- data.matrix(Fdata[,c("D1_T2_D7", "D2_T2_D7", "D3_T2_D7", "D4_T2_D7", "D5_T2_D7", "D6_T2_D7", "D7_T2_D7", "D8_T2_D7", "D9_T2_D7", "D10_T2_D7", "D11_T2_D7")])
 
 # plot heatmaps per topography per day
-hmd_t_3 = Heatmap(TPData_1_D3) + Heatmap(TPData_2_D3)
-hmd_t_7 = Heatmap(TPData_1_D7) + Heatmap(TPData_2_D7)
+hmd_t_3 = Heatmap(TPData_1_D3, column_order = order(as.numeric(gsub("column", "", colnames(TPData_1_D3))))) + Heatmap(TPData_2_D3, column_order = order(as.numeric(gsub("column", "", colnames(TPData_2_D3)))))
+hmd_t_7 = Heatmap(TPData_1_D7, column_order = order(as.numeric(gsub("column", "", colnames(TPData_1_D7))))) + Heatmap(TPData_2_D7, column_order = order(as.numeric(gsub("column", "", colnames(TPData_2_D7)))))
