@@ -3,7 +3,7 @@ if (!requireNamespace("BiocManager", quietly=TRUE))
 BiocManager::install("ComplexHeatmap")
 library(ComplexHeatmap)
 
-setwd=("/Users/")                                                   #insert working directory
+setwd("/Users/20172890/Documents/vakken/OGO jaar 3/GSE41446/Data")              #insert working directory
 
 Fdata = read.table(file="filtereddata.txt",sep="\t",header=TRUE,row.names=1)    #load data as Fdata with the sample codes as header and define the first row with genecodes as rownames                                               
 hv <- heatmap(x)
@@ -124,4 +124,7 @@ TPData_2_D7 <- data.matrix(Fdata[,c("D1_T2_D7", "D2_T2_D7", "D3_T2_D7", "D4_T2_D
 hmd_t_3 = Heatmap(TPData_1_D3, column_order = order(as.numeric(gsub("column", "", colnames(TPData_1_D3))))) + Heatmap(TPData_2_D3, column_order = order(as.numeric(gsub("column", "", colnames(TPData_2_D3)))))
 hmd_t_7 = Heatmap(TPData_1_D7, column_order = order(as.numeric(gsub("column", "", colnames(TPData_1_D7))))) + Heatmap(TPData_2_D7, column_order = order(as.numeric(gsub("column", "", colnames(TPData_2_D7)))))
 
-withdraw
+# withdraw TPData_1_D3 from TPData_2_D3
+TPdiff_D3 <- TPData_2_D3 - TPData_1_D3
+TPdiff_D7 <- TPData_2_D7 - TPData_1_D7
+Heatmap(TPdiff_D3) + Heatmap(TPdiff_D3)         # plot the heatmap for the differences in expression between the two topographies. No clear patterns/lines are found
