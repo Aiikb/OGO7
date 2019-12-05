@@ -9,3 +9,7 @@ BiocManager::install("oligo")
 # installeren
 
 BiocManager::install("WGCNA")
+
+###
+
+BiocManager::install("genefilter")
