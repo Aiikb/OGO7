@@ -128,3 +128,9 @@ hmd_t_7 = Heatmap(TPData_1_D7, column_order = order(as.numeric(gsub("column", ""
 TPdiff_D3 <- TPData_2_D3 - TPData_1_D3
 TPdiff_D7 <- TPData_2_D7 - TPData_1_D7
 Heatmap(TPdiff_D3) + Heatmap(TPdiff_D7)         # plot the heatmap for the differences in expression between the two topographies. No clear patterns/lines are found
+
+# Compare means between the difference in topographies. Explain how the (differnece of the) expression of genes differ between the different days. Some expressions on day 3 are higher with T2,
+# while after 7 days they are higher with T1. And the other way around, while the means of the difference on both days are approximately 1.0.
+mean(abs(TPdiff_D3))
+mean(abs(TPdiff_D7))
+
