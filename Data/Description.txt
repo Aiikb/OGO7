@@ -1,3 +1,5 @@
+A .zip file with all scripts, plots and other data is available on canvas.
+
 UnpackCell: 
 Opens cell files, normalises data, filters based on variance (percentile) and writes to a text file.
 
