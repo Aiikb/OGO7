@@ -1,7 +1,6 @@
-A .zip file with all scripts, plots and other data is available on canvas.
-
 UnpackCell: 
 Opens cell files, normalises data, filters based on variance (percentile) and writes to a text file.
+Variancefilter: The filter used is designed to be used on gene expression datasets. "The default var.func is IQR, which we here define as rowQ(eset, ceiling(0.75 * ncol(eset))) - rowQ(eset, floor(0.25 * ncol(eset))); this choice is motivated by the observation that unexpressed genes are detected most reliably through low variability of their features across samples. Additionally, IQR is robust to outliers." https://www.rdocumentation.org/packages/genefilter/versions/1.54.2/topics/nsFilter 
 
 Dataprep: 
 Reads datamatrix from text file into a dataframe, uses clustering to find outliers, creates a dataframe with sample-traits, optionally filters dataset based on traits and visualises samples. Writes to Rdata file.
@@ -12,4 +11,5 @@ Reads dataset and sampletraits dataframes from Rdata file, plots scale-free topo
 Soft-thresholding power: This is a value used to power the correlation of the genes to that threshold. To choose this you look at the scale-free topology fit index, when this number reaches 0.9 the network is 'scale-free'. For the var95_all dataset the number does not go above 0.8 for powers up to 20, this means that there is probably a strong driver in the data, in this case, the different timescales. Because this is a trait we want to investigate, the data is not split and a power of 6 is chosen. see point 6: https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html
 
 Analysis:
-Reads dataset and sampletraits dataframes and network info from Rdata file, calculates and plots module-trait correlation in a heatmap, calculates gene-module membership and gene-trait significance and creates a scatterplot with linear regression line and correlation of chosen module membership and trait-gene significance. Links transcript ids to gene names, creates summary of gene and module info and writes to csv file.
+Reads dataset and sampletraits dataframes and network info from Rdata file, calculates and plots module-trait correlation in a heatmap, calculates gene-module membership and gene-trait significance and creates a scatterplot with linear regression line and correlation of chosen gene-module membership and trait-gene significance. Links transcript ids to gene names, creates summary of gene and module info and writes to csv file. 
+Files: In the geneinfo summary the genes (rows) are ordered first by module colour then by gene-trait significance(GS) for days, the module membership (MM) columns are ordered by their module-trait correlation for days.
