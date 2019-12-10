@@ -140,3 +140,14 @@ sd(abs(TPdiff_D7))
 quantile(abs(TPdiff_D3))
 quantile(abs(TPdiff_D7))
 
+
+#Obtain seperate datasets from top 1600 expressions with most variance to put into cytoscape
+
+Fdata = read.table(file="top1600.txt",sep="\t",header=TRUE,row.names=1)
+#DO RENAME COLUMNS
+TPData_D3 <- data.matrix(Fdata[,c("D1_T1_D3", "D2_T1_D3", "D3_T1_D3", "D4_T1_D3", "D5_T1_D3", "D6_T1_D3", "D7_T1_D3", "D8_T1_D3", "D9_T1_D3", "D10_T1_D3", "D11_T1_D3", "D1_T2_D3", "D2_T2_D3", "D3_T2_D3", "D4_T2_D3", "D5_T2_D3", "D6_T2_D3", "D7_T2_D3", "D8_T2_D3", "D9_T2_D3", "D10_T2_D3", "D11_T2_D3")])
+TPData_D7 <- data.matrix(Fdata[,c("D1_T1_D7", "D2_T1_D7", "D3_T1_D7", "D4_T1_D7", "D5_T1_D7", "D6_T1_D7", "D7_T1_D7", "D8_T1_D7", "D9_T1_D7", "D10_T1_D7", "D11_T1_D7", "D1_T2_D7", "D2_T2_D7", "D3_T2_D7", "D4_T2_D7", "D5_T2_D7", "D6_T2_D7", "D7_T2_D7", "D8_T2_D7", "D9_T2_D7", "D10_T2_D7", "D11_T2_D7")])
+
+#write data to files
+write.table(TPData_D3, file='TPData_D3.txt', sep='\t')
+write.table(TPData_D7, file='TPData_D7.txt', sep='\t')
