@@ -133,6 +133,10 @@ Heatmap(TPdiff_D3) + Heatmap(TPdiff_D7)         # plot the heatmap for the diffe
 # while after 7 days they are higher with T1. And the other way around, while the means of the difference on both days are approximately 1.0.
 mean(abs(TPdiff_D3))
 mean(abs(TPdiff_D7))
+median(abs(TPdiff_D3))
+median(abs(TPdiff_D7))
 sd(abs(TPdiff_D3))
 sd(abs(TPdiff_D7))
+quantile(abs(TPdiff_D3))
+quantile(abs(TPdiff_D7))
 
