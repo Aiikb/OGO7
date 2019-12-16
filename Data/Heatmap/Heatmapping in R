@@ -152,3 +152,37 @@ TPData_D7 <- (Fdata[,c("D1_T1_D7", "D2_T1_D7", "D3_T1_D7", "D4_T1_D7", "D5_T1_D7
 # Write data to files
 write.table(TPData_D3, file='TPData_D3.txt', sep='\t')
 write.table(TPData_D7, file='TPData_D7.txt', sep='\t')
+
+
+
+# For top100 exp filtered on variance between topographies
+library(circlize)
+
+data_D3 = read.table(file="top100 day3 exp.txt",sep=" ",header=TRUE,row.names=1)
+data_D7 = read.table(file="top100 day7 exp.txt",sep=" ",header=TRUE,row.names=1)
+    
+TPData_1_D3 <- data.matrix(data_D3[1:9,])
+TPData_2_D3 <- data.matrix(data_D3[10:18,])
+TPData_1_D7 <- data.matrix(data_D7[1:9,])
+TPData_2_D7 <- data.matrix(data_D7[10:18,])
+
+colors = colorRamp2(c(2, 12), c("white", "red"))
+Heatmap(TPData_1_D3, column_order= order(colnames(TPData_1_D3)), row_order = order(as.numeric(gsub("row", "", rownames(TPData_1_D3)))), column_title = "Topography 1, Day 3", col=colors, name=" ")
+Heatmap(TPData_2_D3, column_order= order(colnames(TPData_2_D3)), row_order = order(as.numeric(gsub("row", "", rownames(TPData_1_D3)))), column_title = "Topography 2, Day 3", col=colors, name=" ")
+Heatmap(TPData_1_D7, column_order= order(colnames(TPData_1_D7)), row_order = order(as.numeric(gsub("row", "", rownames(TPData_1_D3)))), column_title = "Topography 1, Day 7", col=colors, name=" ")
+Heatmap(TPData_2_D7, column_order= order(colnames(TPData_2_D7)), row_order = order(as.numeric(gsub("row", "", rownames(TPData_1_D3)))), column_title = "Topography 2, Day 7", col=colors, name=" ")
+
+TPdiff_D3 <- TPData_2_D3 - TPData_1_D3
+TPdiff_D7 <- TPData_2_D7 - TPData_1_D7
+
+Heatmap(TPdiff_D3, column_order= order(colnames(TPdiff_D3)), row_order = order(as.numeric(gsub("row", "", rownames(TPdiff_D3)))), column_title = "Difference, Day 3")
+Heatmap(TPdiff_D7, column_order= order(colnames(TPdiff_D7)), row_order = order(as.numeric(gsub("row", "", rownames(TPdiff_D7)))), column_title = "Difference, Day 7")
+
+mean(abs(TPdiff_D3))
+mean(abs(TPdiff_D7))
+median(abs(TPdiff_D3))
+median(abs(TPdiff_D7))
+sd(abs(TPdiff_D3))
+sd(abs(TPdiff_D7))
+quantile(abs(TPdiff_D3))
+quantile(abs(TPdiff_D7))
