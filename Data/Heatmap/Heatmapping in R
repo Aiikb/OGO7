@@ -186,3 +186,7 @@ sd(abs(TPdiff_D3))
 sd(abs(TPdiff_D7))
 quantile(abs(TPdiff_D3))
 quantile(abs(TPdiff_D7))
+
+# Select common genes between the datasets
+CData_D3 <- 
+CData_D7 <- 
