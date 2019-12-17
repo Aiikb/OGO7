@@ -210,3 +210,10 @@ Heatmap(CData_1_D3, column_order= order(colnames(CData_1_D3)), row_order = order
 Heatmap(CData_1_D7, column_order= order(colnames(CData_1_D7)), row_order = order(as.numeric(gsub("row", "", rownames(CData_1_D7)))), column_title = "Topography 1, Day 7", col=colors, name=" ")
 Heatmap(CData_2_D3, column_order= order(colnames(CData_2_D3)), row_order = order(as.numeric(gsub("row", "", rownames(CData_2_D3)))), column_title = "Topography 2, Day 3", col=colors, name=" ")
 Heatmap(CData_2_D7, column_order= order(colnames(CData_2_D7)), row_order = order(as.numeric(gsub("row", "", rownames(CData_2_D7)))), column_title = "Topography 2, Day 7", col=colors, name=" ")
+
+Cdiff_D3 <- TPData_2_D3 - TPData_1_D3
+Cdiff_D7 <- TPData_2_D7 - TPData_1_D7
+
+Heatmap(TPdiff_D3, column_order= order(colnames(TPdiff_D3)), row_order = order(as.numeric(gsub("row", "", rownames(TPdiff_D3)))), column_title = "Difference, Day 3")
+Heatmap(TPdiff_D7, column_order= order(colnames(TPdiff_D7)), row_order = order(as.numeric(gsub("row", "", rownames(TPdiff_D7)))), column_title = "Difference, Day 7")
+
