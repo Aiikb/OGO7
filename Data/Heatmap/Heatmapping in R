@@ -191,6 +191,7 @@ quantile(abs(TPdiff_D7))
 list_df3 = list(TPData_1_D3, TPData_1_D7)
 list_df7 = list(TPData_2_D3, TPData_2_D7)
 
+# Make a list of genenames that are present in both dataframes, because day 3 and day 7 contain different genes
 Cnames_D3 = colnames(list_df3[[1]])
 for (i in 2:length(list_df3)){
   Cnames_D3 = intersect(Cnames_D3, colnames(list_df3[[i]]))
@@ -201,19 +202,29 @@ for (i in 2:length(list_df7)){
   Cnames_D7 = intersect(Cnames_D7, colnames(list_df7[[i]]))
 }
 
+# Create dataframes with only the common genes that are present in both dataframes 
 CData_1_D3 <- TPData_1_D3[,c(Cnames_D3)]
 CData_1_D7 <- TPData_1_D7[,c(Cnames_D7)]
 CData_2_D3 <- TPData_2_D3[,c(Cnames_D3)]
 CData_2_D7 <- TPData_2_D7[,c(Cnames_D7)]
 
-Heatmap(CData_1_D3, column_order= order(colnames(CData_1_D3)), row_order = order(as.numeric(gsub("row", "", rownames(CData_1_D3)))), column_title = "Topography 1, Day 3", col=colors, name=" ")
-Heatmap(CData_1_D7, column_order= order(colnames(CData_1_D7)), row_order = order(as.numeric(gsub("row", "", rownames(CData_1_D7)))), column_title = "Topography 1, Day 7", col=colors, name=" ")
-Heatmap(CData_2_D3, column_order= order(colnames(CData_2_D3)), row_order = order(as.numeric(gsub("row", "", rownames(CData_2_D3)))), column_title = "Topography 2, Day 3", col=colors, name=" ")
-Heatmap(CData_2_D7, column_order= order(colnames(CData_2_D7)), row_order = order(as.numeric(gsub("row", "", rownames(CData_2_D7)))), column_title = "Topography 2, Day 7", col=colors, name=" ")
+# Transpose the dataframes to have the genenames on the y-axis to make the comparison between heatmaps easier
+TCData_1_D3 = t(CData_1_D3)
+TCData_1_D7 = t(CData_1_D7)
+TCData_2_D3 = t(CData_2_D3)
+TCData_2_D7 = t(CData_2_D7)
 
-Cdiff_D3 <- TPData_2_D3 - TPData_1_D3
-Cdiff_D7 <- TPData_2_D7 - TPData_1_D7
+# Plot the heatmaps of the transposed dataframes
+Heatmap(TCData_1_D3, row_order= order(rownames(TCData_1_D3)), column_order = order(as.numeric(gsub("column", "", colnames(TCData_1_D3)))), column_title = "Topography 1, Day 3", col=colors, name=" ")
+Heatmap(TCData_1_D7, row_order= order(rownames(TCData_1_D7)), column_order = order(as.numeric(gsub("column", "", colnames(TCData_1_D7)))), column_title = "Topography 1, Day 7", col=colors, name=" ")
+Heatmap(TCData_2_D3, row_order= order(rownames(TCData_2_D3)), column_order = order(as.numeric(gsub("column", "", colnames(TCData_2_D3)))), column_title = "Topography 2, Day 3", col=colors, name=" ")
+Heatmap(TCData_2_D7, row_order= order(rownames(TCData_2_D7)), column_order = order(as.numeric(gsub("column", "", colnames(TCData_2_D7)))), column_title = "Topography 2, Day 7", col=colors, name=" ")
 
-Heatmap(TPdiff_D3, column_order= order(colnames(TPdiff_D3)), row_order = order(as.numeric(gsub("row", "", rownames(TPdiff_D3)))), column_title = "Difference, Day 3")
-Heatmap(TPdiff_D7, column_order= order(colnames(TPdiff_D7)), row_order = order(as.numeric(gsub("row", "", rownames(TPdiff_D7)))), column_title = "Difference, Day 7")
+# Define the difference between the expression on top1 and top 2 between the time differences.
+TCdiff_T1 <- TCData_1_D7 - TCData_1_D3
+TCdiff_T2 <- TCData_2_D7 - TCData_2_D3
+
+# Plot those heatmaps
+Heatmap(TCdiff_T1, row_order= order(rownames(TCdiff_T1)), column_order = order(as.numeric(gsub("column", "", colnames(TCdiff_T1)))), column_title = "Difference between days, Topography 1", name=" ")
+Heatmap(TCdiff_T2, row_order= order(rownames(TCdiff_T2)), column_order = order(as.numeric(gsub("column", "", colnames(TCdiff_T2)))), column_title = "Difference between days, Topography 2", name=" ")
 
