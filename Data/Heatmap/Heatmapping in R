@@ -188,5 +188,25 @@ quantile(abs(TPdiff_D3))
 quantile(abs(TPdiff_D7))
 
 # Select common genes between the datasets
-CData_D3 <- 
-CData_D7 <- 
+list_df3 = list(TPData_1_D3, TPData_1_D7)
+list_df7 = list(TPData_2_D3, TPData_2_D7)
+
+Cnames_D3 = colnames(list_df3[[1]])
+for (i in 2:length(list_df3)){
+  Cnames_D3 = intersect(Cnames_D3, colnames(list_df3[[i]]))
+}
+
+Cnames_D7 = colnames(list_df7[[1]])                             #Lists are equal
+for (i in 2:length(list_df7)){
+  Cnames_D7 = intersect(Cnames_D7, colnames(list_df7[[i]]))
+}
+
+CData_1_D3 <- TPData_1_D3[,c(Cnames_D3)]
+CData_1_D7 <- TPData_1_D7[,c(Cnames_D7)]
+CData_2_D3 <- TPData_2_D3[,c(Cnames_D3)]
+CData_2_D7 <- TPData_2_D7[,c(Cnames_D7)]
+
+Heatmap(CData_1_D3, column_order= order(colnames(CData_1_D3)), row_order = order(as.numeric(gsub("row", "", rownames(CData_1_D3)))), column_title = "Topography 1, Day 3", col=colors, name=" ")
+Heatmap(CData_1_D7, column_order= order(colnames(CData_1_D7)), row_order = order(as.numeric(gsub("row", "", rownames(CData_1_D7)))), column_title = "Topography 1, Day 7", col=colors, name=" ")
+Heatmap(CData_2_D3, column_order= order(colnames(CData_2_D3)), row_order = order(as.numeric(gsub("row", "", rownames(CData_2_D3)))), column_title = "Topography 2, Day 3", col=colors, name=" ")
+Heatmap(CData_2_D7, column_order= order(colnames(CData_2_D7)), row_order = order(as.numeric(gsub("row", "", rownames(CData_2_D7)))), column_title = "Topography 2, Day 7", col=colors, name=" ")
