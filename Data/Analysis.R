@@ -7,9 +7,9 @@ enableWGCNAThreads()
 
 # open working directory and load data
 setwd("/Users/20172805/Documents/BMT3/OGO comp/Studio") # set working directory to datafolder
-lnames = load(file = "Processed data/Genes-dataInput-var95-all.RData")
+lnames = load(file = "Processed data/Genes-dataInput-50var-day7.RData")
 lnames
-lnames = load(file = "Nets/Topography-networkConstruction-auto var95 all.RData");
+lnames = load(file = "Nets/Topography-networkConstruction-auto 50var day7.RData");
 lnames
 
 # Define numbers of genes and samples
@@ -26,14 +26,14 @@ moduleTraitCor = cor(MEs, datTraits, use = "p");
 moduleTraitPvalue = corPvalueStudent(moduleTraitCor, nSamples);
 
 # Create matrix with correlations between modules and traits and their p-values
-textMatrix = paste(signif(moduleTraitCor, 2), "\n(",
+textMatrix = paste(signif(moduleTraitCor, 2), " (",
 signif(moduleTraitPvalue, 1), ")", sep = "");
-dim(textMatrix) = dim(moduleTraitCor)
-par(mar = c(6, 8.5, 3, 3));
+dim(textMatrix) = dim(moduleTraitCor);
+par(mar = c(0.5, 9, 2, 2));
 
 # Display the correlation values within a heatmap plot
 labeledHeatmap(Matrix = moduleTraitCor,
-xLabels = names(datTraits),
+xLabels = datTraits,
 yLabels = names(MEs),
 ySymbols = names(MEs),
 colorLabels = FALSE,
@@ -46,10 +46,6 @@ main = paste("Module-trait relationships"))
 
 
 ## Correlation genes with traits and modules ##
-# Create trait dataframe with only interesting trait
-days = as.data.frame(datTraits$days);
-names(days) = "days"
-
 # Calculate gene-module membership and p values
 modNames = substring(names(MEs), 3)
 geneModuleMembership = as.data.frame(cor(datExpr, MEs, use = "p"));
@@ -70,42 +66,29 @@ for (i in 1:length(datTraits)){
 names(geneTraitSignificance) = GS_names
 names(GSPvalue) = pGS_names
 
+
 # Plot chosen module membership vs. gene significance
-module = "yellow"
+#sizeGrWindow(7, 7);
+par(mfrow = c(1,1));
+module = "tan"
 column = match(module, modNames);
 moduleGenes = moduleColors==module;
-verboseScatterplot(abs(geneModuleMembership[moduleGenes, column]),abs(geneTraitSignificance$GS.days[moduleGenes]),
-xlab = paste("Module Membership in", module, "module"),
-ylab = "Gene significance for days",
+verboseScatterplot(abs(geneModuleMembership[moduleGenes, column]),abs(geneTraitSignificance$GS.surface[moduleGenes]),
+corFnc = "cor", corOptions = "use = 'p'",xlab = paste("Module Membership in", module, "module"),
+ylab = "Gene significance for surface",
 main = paste("Module membership vs. gene significance\n"),
 cex.main = 1.2, cex.lab = 1.2, cex.axis = 1.2,abline = TRUE, col = "black")
-fit <- lm(abs(geneModuleMembership[moduleGenes, column]) ~ abs(geneTraitSignificance$GS.days[moduleGenes]))
+fit <- lm(abs(geneModuleMembership[moduleGenes, column]) ~ abs(geneTraitSignificance$GS.surface[moduleGenes]))
 R2 = summary(fit)$adj.r.squared
 legend("topright", bty="n", legend=paste("R2 is",format(R2, digits=4)))
 
 
-## link transcript ids to genenames ##
-annot <- read.csv("Raw data/HuGene-1_1-st-v1.na36.hg19.probeset.csv", header=TRUE,
-                                                skip = 22)
-probes=names(datExpr)
-probes2annot = match(probes, annot$transcript_cluster_id)
-# check if all probes are annotated (should be zero)
-sum(is.na(probes2annot))
-
-# splitting the geneassignment strings to get gene names
-geneAssignment = strsplit(annot$gene_assignment,"//")
-geneNames = array()
-for (i in 1:length(geneAssignment)){
-  assignment = geneAssignment[[i]]
-  geneNames[i] = assignment[2]
-}
-
 
 ## create summary of geneinfo ##
 # creating dataframe with genenames, module colors, genetraitsignificance
-geneInfo0 = data.frame(geneName = geneNames[probes2annot],
+geneInfo0 = data.frame(geneName = names(datExpr),
                        moduleColor = moduleColors)
-rownames(geneInfo0) = probes
+
 
 for (trait in 1:ncol(geneTraitSignificance))
 {
@@ -116,7 +99,7 @@ for (trait in 1:ncol(geneTraitSignificance))
 }
 
 # Order modules by their significance for days
-modOrder = order(-abs(cor(MEs, days, use = "p")));
+modOrder = order(-abs(moduleTraitCor[,3]));
 # Add module membership information columns with the most significant first
 for (mod in 1:ncol(geneModuleMembership))
 {
@@ -128,7 +111,7 @@ for (mod in 1:ncol(geneModuleMembership))
 }
 
 # Order the genes in the geneInfo variable first by module color, then by geneTraitSignificance
-geneOrder = order(geneInfo0$moduleColor, -abs(geneInfo0$GS.days));
+geneOrder = order(geneInfo0$moduleColor, -abs(geneInfo0$GS.surface));
 geneInfo = geneInfo0[geneOrder, ]
 
 
@@ -149,6 +132,6 @@ modInfo = as.data.frame(t(modInfo0))
 
 
 ## saving data ##
-write.csv(geneInfo, file = "Analysis/geneInfo_var95_all_days.csv")
-write.csv(modInfo, file = "Analysis/modInfo_var95_all_days.csv")
+write.csv(geneInfo, file = "Analysis/geneInfo_50var_day7.csv")
+write.csv(modInfo, file = "Analysis/modInfo_50var_day7.csv")
 
